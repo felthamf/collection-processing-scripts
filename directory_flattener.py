@@ -1,3 +1,5 @@
+# Script for flattening files in a directory tree. Useful for bulk loading etc.
+
 import os
 import csv
 import hashlib
