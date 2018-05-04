@@ -5,9 +5,10 @@ import csv
 import hashlib
 import shutil
 
-#sets the root point to start os.walk
-my_folder = r"\\wlgprdfile02\home$\FelthaFl\home\Moving_Test"
-destination = r"\\wlgprdfile02\home$\FelthaFl\home\Moving"
+# Sets the root point to start os.walk
+my_folder = r""
+# Sets the destination folder for everything
+destination = r""
 
 #function for creating hash
 def create_hash(filepath):
@@ -21,7 +22,8 @@ def create_hash(filepath):
 			buf = afile.read(BLOCKSIZE)
 	return (hasher.hexdigest())
 
-#clever way of opening files that then shuts them again. Notice that opening something as "wb" (write binary) removes the second line break from .csv
+# Clever way of opening files that then shuts them again. 
+# Notice that opening something as "wb" (write binary) removes the second line break from .csv
 with open("my_file_log.csv","wb") as data:
 	#csv option
 	writer = csv.writer(data, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
@@ -40,7 +42,7 @@ with open("my_file_log.csv","wb") as data:
 			#row=[full_path,rel_path,name,file_ext,checksum]
 			# writer.writerow(row)
 			if not os.path.exists(destination_path):
-					shutil.copy2(full_path, destination_path)
+				shutil.copy2(full_path, destination_path)
 			else:
 				suffix = 0
 				while os.path.exists(destination_path):
