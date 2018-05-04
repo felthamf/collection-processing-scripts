@@ -1,3 +1,6 @@
+# Script for analysing hex signatures of unknown file types in a directory structure
+# Very much a work in progress
+
 import os
 import csv
 import binascii
@@ -6,7 +9,7 @@ import binascii
 folder = r""
 signatures = []
 
-# gets information about each directory and logs it to screen
+# gets information about directory structure, contents of directory, and pulls out file hex information. Logs it to screen.
 for root, subs, files in os.walk(folder):
 	print('Directory: %s' % root)
 	print ('Files: %s' % len(files))
@@ -20,6 +23,8 @@ for root, subs, files in os.walk(folder):
 			ministring = string[0:1200]
 			# creates a list of all the first 150 bytes of each file in the directory
 			signatures.append(ministring)
+			
+# this should match the number of files in the directory tree because it's just a list of the first 150 bytes of each file			
 print len(signatures)
 print signatures[1]
 
